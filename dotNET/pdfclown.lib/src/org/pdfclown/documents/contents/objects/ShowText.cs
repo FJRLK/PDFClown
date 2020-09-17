@@ -103,7 +103,7 @@ namespace org.pdfclown.documents.contents.objects
       */
 
       double contextHeight = state.Scanner.ContextSize.Height;
-      Font font = state.Font;
+      Font font = state.Font?? state.Scanner.ParentLevel.State.Font;//current Font ends up null sometimes
       double fontSize = state.FontSize;
       double scaledFactor = Font.GetScalingFactor(fontSize) * state.Scale;
       bool wordSpaceSupported = !(font is CompositeFont);
